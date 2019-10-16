@@ -1,9 +1,8 @@
 ---
 
 ldap:
-  host: 'localhost'
-  port: '636'
-  basedn: 'dc=example,dc=org'
+  uri:      'ldap://localhost'
+  basedn:   'dc=example,dc=org'
   starttls: false
   bind:     false
   binddn:   ''
