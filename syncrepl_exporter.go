@@ -46,7 +46,7 @@ var Config = struct {
 		Basedn   string `default:"dc=example,dc=org"`
 		StartTLS bool   `default:"false"`
 		Bind     bool   `default:"false"`
-		Bindcn   string `default:""`
+		Binddn   string `default:""`
 		Bindpass string `default:""`
 	}
 }{}

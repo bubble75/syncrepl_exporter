@@ -5,6 +5,6 @@ ldap:
   port: '636'
   basedn: 'dc=example,dc=org'
   starttls: false
-  bind: false
-  bindcn: ''
+  bind:     false
+  binddn:   ''
   bindpass: ''
