@@ -1,6 +1,5 @@
 GO                      ?= GO15VENDOREXPERIMENT=1 go
 GOPATH                  := $(firstword $(subst :, ,$(shell $(GO) env GOPATH)))
-PROMU                   ?= $(GOPATH)/bin/promu
 GODEP                   ?= $(GOPATH)/bin/dep
 GOLINTER                ?= $(GOPATH)/bin/gometalinter
 pkgs                    = $(shell $(GO) list ./... | grep -v /vendor/)
@@ -24,9 +23,9 @@ gometalinter: $(GOLINTER)
 	@$(GOLINTER) --install > /dev/null
 	@$(GOLINTER) --config=./.gometalinter.json ./...
 
-build: $(PROMU) depcheck
+build: depcheck
 	@echo ">> building binaries"
-	@$(PROMU) build --prefix $(PREFIX)
+	@CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"'
 
 clean:
 	@echo ">> Cleaning up"
@@ -41,14 +40,9 @@ $(GOPATH)/bin/dep dep:
 		GOARCH=$(subst x86_64,amd64,$(patsubst i%86,386,$(shell uname -m))) \
 		$(GO) get -u github.com/golang/dep/cmd/dep
 
-$(GOPATH)/bin/promu promu:
-	@GOOS=$(shell uname -s | tr A-Z a-z) \
-		GOARCH=$(subst x86_64,amd64,$(patsubst i%86,386,$(shell uname -m))) \
-		$(GO) get -u github.com/prometheus/promu
-
 $(GOPATH)/bin/gometalinter lint:
 	@GOOS=$(shell uname -s | tr A-Z a-z) \
 		GOARCH=$(subst x86_64,amd64,$(patsubst i%86,386,$(shell uname -m))) \
 		$(GO) get -u github.com/alecthomas/gometalinter
 
-.PHONY: all format vet build test promu clean $(GOPATH)/bin/promu $(GOPATH)/bin/gometalinter lint $(GOPATH)/bin/dep dep depcheck
+.PHONY: all format vet build test clean $(GOPATH)/bin/gometalinter lint $(GOPATH)/bin/dep dep depcheck
