@@ -152,12 +152,12 @@
   version = "v1.2"
 
 [[projects]]
-  digest = "1:93aaeb913621a3a53aaa78592c00f46d63e3bb0ea76e2d9b07327b50959a5778"
-  name = "gopkg.in/ldap.v2"
+  digest = "1:e9a0fa7c2dfc90e0fae16be5825ad98074d8704f5fcebfdc289a8e8fb0f8e4b5"
+  name = "gopkg.in/ldap.v3"
   packages = ["."]
   pruneopts = "UT"
-  revision = "bb7a9ca6e4fbc2129e3db588a34bc970ffe811a9"
-  version = "v2.5.1"
+  revision = "9f0d712775a0973b7824a1585a86a4ea1d5263d9"
+  version = "v3.0.3"
 
 [[projects]]
   digest = "1:342378ac4dcb378a5448dd723f0784ae519383532f5e70ade24132c4c8693202"
@@ -177,7 +177,7 @@
     "github.com/prometheus/common/log",
     "github.com/prometheus/common/version",
     "gopkg.in/alecthomas/kingpin.v2",
-    "gopkg.in/ldap.v2",
+    "gopkg.in/ldap.v3",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

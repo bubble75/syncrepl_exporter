@@ -13,7 +13,7 @@ import (
 	"github.com/prometheus/common/log"
 	"github.com/prometheus/common/version"
 	"gopkg.in/alecthomas/kingpin.v2"
-	"gopkg.in/ldap.v2"
+	"gopkg.in/ldap.v3"
 )
 
 var (

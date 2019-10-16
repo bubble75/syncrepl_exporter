@@ -42,8 +42,8 @@
   version = "2.2.6"
 
 [[constraint]]
-  name = "gopkg.in/ldap.v2"
-  version = "2.5.1"
+  name = "gopkg.in/ldap.v3"
+  version = "3.0.3"
 
 [prune]
   go-tests = true
